@@ -6,7 +6,7 @@ import * as d3 from "d3";
 
 const graphId = "theGraph";
 
-const Content = () => {
+const Content = (): JSX.Element   => {
   const graphRef = React.useRef(null);
   React.useEffect(() => {
     // d3.select(`#${graphId}`).style("color", "green");
@@ -26,20 +26,24 @@ const Content = () => {
   );
 };
 
-const Header = () => {
-  return <header className="App__header">
-    <h2>An App</h2>
-    <img src={logo} className="Header__logo" alt="logo" />
-  </header>
-}
+const Header = (): JSX.Element => {
+  return (
+    <header className="App__header">
+      <h2>An App</h2>
+      <img src={logo} className="Header__logo" alt="logo" />
+    </header>
+  );
+};
 
-const Footer = () => {
-  return <footer className="App__footer rootEl">
-    Designed by ecoologic &copy; { (new Date()).getFullYear() }
-  </footer>
-}
+const Footer = (): JSX.Element => {
+  return (
+    <footer className="App__footer rootEl">
+      Designed by ecoologic &copy; {new Date().getFullYear()}
+    </footer>
+  );
+};
 
-function App() {
+const App = (): JSX.Element => {
   return (
     <article className="App">
       <Header />
@@ -47,6 +51,6 @@ function App() {
       <Footer />
     </article>
   );
-}
+};
 
 export default App;
