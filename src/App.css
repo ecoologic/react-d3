@@ -1,18 +1,30 @@
-:root {
-  --blackish: #282c34;
-  --whitish: #f1f5fd;
-}
-
 /* Convention: */
 /* AppBlock__AppEl--AppModifier (capital for components only) */
 
-/* Header */
+/* Disposition */
+
+.App__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .Header__logo {
   height: 50%;
 }
 
-/* Basic look and feel */
+.App__footer {
+  height: 1.5em;
+  text-align: center;
+}
+
+/* Colors */
+
+:root {
+  --blackish: #282c34;
+  --whitish: #f1f5fd;
+}
+
 body {
   background-color: var(--whitish);
 }
@@ -23,11 +35,10 @@ body {
 .App__footer {
   background-color: var(--blackish);
   color: var(--whitish);
-  height: 1.5em;
-  text-align: center;
 }
 
 /* Grid */
+
 .App {
   min-height: 100vh;
   display: grid;
@@ -35,9 +46,6 @@ body {
 }
 .App__header {
   height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
 }
 
 /* Functional */
