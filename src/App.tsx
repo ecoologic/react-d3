@@ -1,20 +1,20 @@
-import React from "react";
-import "./App.css";
-import logo from "./logo.svg";
+import React from 'react';
+import './App.css';
+import logo from './logo.svg';
 
-import * as d3 from "d3";
+import * as d3 from 'd3';
 
-const graphId = "theGraph";
+const graphId = 'theGraph';
 
-const Content = (): JSX.Element   => {
+const Content = (): JSX.Element => {
   const graphRef = React.useRef(null);
   React.useEffect(() => {
     // d3.select(`#${graphId}`).style("color", "green");
     d3.select(`#${graphId}`)
-      .selectAll("div")
+      .selectAll('div')
       .data([1, 2, 3])
       .enter()
-      .append("div")
+      .append('div')
       .text((data) => data);
   }, []);
   return (
