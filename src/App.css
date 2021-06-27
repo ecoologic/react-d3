@@ -1,6 +1,6 @@
 :root {
-  --header-bg-color: #282c34;
-  --body-bg-color: #f1f5fd;
+  --blackish: #282c34;
+  --whitish: #f1f5fd;
 }
 
 /* Convention: */
@@ -9,43 +9,32 @@
 /* Header */
 
 .Header__logo {
-  height: 100px;
+  height: 50%;
 }
 
-/* UI */
+/* Basic look and feel */
 body {
-  background-color: var(--body-bg-color);
+  background-color: var(--whitish);
 }
 .App__header {
-  background-color: var(--header-bg-color);
+  background-color: var(--blackish);
+  color: var(--whitish);
 }
 .App__footer {
-  background-color: var(--header-bg-color);
-  color: white;
+  background-color: var(--blackish);
+  color: var(--whitish);
   height: 1.5em;
   text-align: center;
 }
 
-/* Layout */
-.App__content {
-  min-height: 100%;
-}
-article {
+/* Grid */
+.App {
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
 }
-main {
-  max-width: 80ch;
-}
-html, body {
-  width: 100%;
-  height: 100%;
-}
 .App__header {
-  background-color: var(--header-bg-color);
   height: 100px;
-  color: white;
   display: flex;
   align-items: center;
   justify-content: space-around;
