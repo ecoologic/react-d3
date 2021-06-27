@@ -2,29 +2,7 @@ import React from 'react';
 import './App.css';
 import logo from './logo.svg';
 
-import * as d3 from 'd3';
-
-const graphId = 'theGraph';
-
-const Content = (): JSX.Element => {
-  const graphRef = React.useRef(null);
-  React.useEffect(() => {
-    // d3.select(`#${graphId}`).style("color", "green");
-    d3.select(`#${graphId}`)
-      .selectAll('div')
-      .data([1, 2, 3])
-      .enter()
-      .append('div')
-      .text((data) => data);
-  }, []);
-  return (
-    <main className="App__content">
-      <div id={graphId} ref={graphRef} className="Graph rootEl">
-        d3 here
-      </div>
-    </main>
-  );
-};
+import Content from './Content';
 
 const Header = (): JSX.Element => {
   return (
