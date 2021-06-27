@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import logo from './logo.svg';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 import Content from './Content';
 
@@ -24,6 +25,7 @@ const Footer = (): JSX.Element => {
 const App = (): JSX.Element => {
   return (
     <article className="App">
+      <CssBaseline />
       <Header />
       <Content />
       <Footer />
