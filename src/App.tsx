@@ -1,11 +1,12 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import logo from "./logo.svg";
+
 import * as d3 from "d3";
 
 const graphId = "theGraph";
 
-const Graph = () => {
+const Content = () => {
   const graphRef = React.useRef(null);
   React.useEffect(() => {
     // d3.select(`#${graphId}`).style("color", "green");
@@ -17,33 +18,34 @@ const Graph = () => {
       .text((data) => data);
   }, []);
   return (
-    <div id={graphId} ref={graphRef}>
-      d3 here
-    </div>
+    <main className="App__content">
+      <div id={graphId} ref={graphRef} className="Graph rootEl">
+        d3 here
+      </div>
+    </main>
   );
 };
 
+const Header = () => {
+  return <header className="App__header">
+    <h2>An App</h2>
+    <img src={logo} className="Header__logo" alt="logo" />
+  </header>
+}
+
+const Footer = () => {
+  return <footer className="App__footer rootEl">
+    Designed by ecoologic &copy; { (new Date()).getFullYear() }
+  </footer>
+}
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <section>
-        <Graph />
-      </section>
-    </div>
+    <article className="App">
+      <Header />
+      <Content />
+      <Footer />
+    </article>
   );
 }
 
