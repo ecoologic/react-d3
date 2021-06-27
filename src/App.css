@@ -1,12 +1,12 @@
 /* Convention: */
 /* AppBlock__AppEl--AppModifier (capital for components only) */
 
-/* Disposition */
+/* Layout Content Disposition */
 
 .App__header {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-betw;
 }
 
 .Header__logo {
@@ -14,8 +14,21 @@
 }
 
 .App__footer {
-  height: 1.5em;
   text-align: center;
+}
+
+/* Layout Grid */
+
+.App {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+.App__header {
+  height: 100px;
+}
+.App__footer {
+  height: 1.5em;
 }
 
 /* Colors */
@@ -35,17 +48,6 @@ body {
 .App__footer {
   background-color: var(--blackish);
   color: var(--whitish);
-}
-
-/* Grid */
-
-.App {
-  min-height: 100vh;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-}
-.App__header {
-  height: 100px;
 }
 
 /* Functional */
