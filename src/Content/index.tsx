@@ -1,6 +1,21 @@
-import { Button, TextField } from '@material-ui/core';
+import {
+  Button as MuiButton,
+  ButtonBaseProps,
+  ButtonTypeMap,
+  ExtendButtonBase,
+  TextField,
+} from '@material-ui/core';
 import React, { ChangeEvent, useState } from 'react';
 import Graph from '../Graph';
+
+// TODO: ExtendButtonBase<ButtonTypeMap<{}, 'button'>>
+const Button = (props: any) => {
+  return (
+    <MuiButton variant="contained" {...props}>
+      {props.children}
+    </MuiButton>
+  );
+};
 
 const Form = () => {
   const [values, setValues] = useState<Record<string, string>>({});

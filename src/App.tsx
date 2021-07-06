@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import logo from './logo.svg';
 import CssBaseline from '@material-ui/core/CssBaseline';
+// import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 
 import Content from './Content';
 
@@ -21,6 +22,14 @@ const Footer = (): JSX.Element => {
     </footer>
   );
 };
+
+// const theme = createMuiTheme({
+//   palette: {
+//     common: {},
+//   },
+// });
+// <ThemeProvider theme={theme}>
+// </ThemeProvider>
 
 const App = (): JSX.Element => {
   return (
