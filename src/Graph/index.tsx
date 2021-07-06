@@ -15,7 +15,7 @@ const Graph = (): JSX.Element => {
       .text((data) => data);
   }, []);
   return (
-    <div id={graphId} ref={graphRef} className="Graph rootEl">
+    <div id={graphId} ref={graphRef} className="Graph">
       D3 here
     </div>
   );

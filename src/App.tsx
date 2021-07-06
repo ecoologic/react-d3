@@ -16,7 +16,7 @@ const Header = (): JSX.Element => {
 
 const Footer = (): JSX.Element => {
   return (
-    <footer className="App__footer rootEl">
+    <footer className="App__footer">
       Designed by ecoologic &copy; {new Date().getFullYear()}
     </footer>
   );

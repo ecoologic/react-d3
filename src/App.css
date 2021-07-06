@@ -1,34 +1,38 @@
 /* Convention: */
 /* AppBlock__AppEl--AppModifier (capital for components only) */
 
-/* Layout Content Disposition */
+/* Content Disposition */
 
 .App__header {
   display: flex;
   align-items: center;
   justify-content: space-betw;
+  padding-inline: 1rem;
 }
-
 .Header__logo {
   height: 50%;
 }
-
+.App__content {
+  padding: 1rem;
+}
 .App__footer {
+  padding-top: 1rem;
   text-align: center;
 }
 
-/* Layout Grid */
+/* Vertical Layout and heights */
 
 .App {
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
 }
+
 .App__header {
-  height: 100px;
+  height: 5rem;
 }
 .App__footer {
-  height: 1.5em;
+  height: 30em;
 }
 
 /* Colors */
