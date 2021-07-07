@@ -4,7 +4,6 @@ import * as d3 from 'd3';
 const Graph = (): JSX.Element => {
   const graphRef = React.useRef(null);
   React.useEffect(() => {
-    // d3.select(`#${graphId}`).style("color", "green");
     d3.select(`#nodeGroup`)
       .selectAll('circle')
       .data([1, 2, 3])
