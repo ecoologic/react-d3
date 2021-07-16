@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import logo from './logo.svg';
 import CssBaseline from '@material-ui/core/CssBaseline';
-// import { createMuiTheme, ThemeProvider } from '@material-ui/core';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 
 import Content from './Content';
 
@@ -23,21 +23,25 @@ const Footer = (): JSX.Element => {
   );
 };
 
-// const theme = createMuiTheme({
-//   palette: {
-//     common: {},
-//   },
-// });
-// <ThemeProvider theme={theme}>
-// </ThemeProvider>
+// https://material-ui.com/customization/default-theme/
+const theme = createMuiTheme({
+  props: {
+    MuiButton: { variant: 'contained' },
+  },
+  typography: {
+    button: { textTransform: 'none' },
+  },
+});
 
 const App = (): JSX.Element => {
   return (
     <article className="App">
       <CssBaseline />
-      <Header />
-      <Content />
-      <Footer />
+      <ThemeProvider theme={theme}>
+        <Header />
+        <Content />
+        <Footer />
+      </ThemeProvider>
     </article>
   );
 };
