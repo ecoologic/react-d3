@@ -2,33 +2,53 @@ import { Button as MuiButton, ButtonGroup, TextField } from '@material-ui/core';
 import { ButtonProps } from '@material-ui/core/Button/Button';
 import React, { ChangeEvent, FC, useState } from 'react';
 import Graph from '../Graph';
+import { IHasOnSubmit, IonSubmit } from '../interfaces';
 import useStyles from './useStyles';
 
-const Button: FC<ButtonProps> = (props) => {
+// TODO: variant="contained" color="secondary" works??
+const Button: FC<ButtonProps & { enabled?: boolean }> = ({
+  enabled = true,
+  disabled,
+  children,
+  ...otherProps
+}) => {
   return (
-    <MuiButton variant="contained" {...props}>
-      {props.children}
+    <MuiButton disabled={!enabled} {...otherProps}>
+      {children}
     </MuiButton>
   );
 };
 
-const Form: FC = () => {
+const GraphForm: FC<IHasOnSubmit> = ({ onSubmit }) => {
   const classes = useStyles();
   const [values, setValues] = useState<Record<string, string>>({});
   const onChange = (ev: ChangeEvent<HTMLInputElement>) => {
+    console.log(`old values`, values);
     setValues((values) => ({ ...values, [ev.target.id]: ev.target.value }));
   };
   return (
     <form>
       <TextField
-        id="query"
-        label="Standard"
+        id="name"
+        label="Name"
+        type="text"
         required
         autoFocus
         onChange={onChange}
+        className={classes.paddingLeft}
       />
-      <ButtonGroup className={classes.padded}>
-        <Button title="Push me">Submit</Button>
+      <TextField
+        id="size"
+        label="Size"
+        type="number"
+        required
+        onChange={onChange}
+        className={classes.paddingLeft}
+      />
+      <ButtonGroup className={classes.padding}>
+        <Button title="Push me" onClick={() => onSubmit(values)}>
+          Submit
+        </Button>
       </ButtonGroup>
       {values.query}
     </form>
@@ -36,9 +56,14 @@ const Form: FC = () => {
 };
 
 const Content: FC = () => {
+  const onSubmit: IonSubmit = (values) => {
+    console.log(` values`, values);
+    alert(JSON.stringify(values));
+  };
+
   return (
     <main className="App__content">
-      <Form />
+      <GraphForm onSubmit={onSubmit} />
       <Graph />
     </main>
   );
