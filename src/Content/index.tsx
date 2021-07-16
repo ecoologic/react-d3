@@ -19,9 +19,15 @@ const Button: FC<ButtonProps & { enabled?: boolean }> = ({
   );
 };
 
+interface IGraphFormValues {
+  name: string;
+  size: number;
+}
+
 const GraphForm: FC<IHasOnSubmit> = ({ onSubmit }) => {
   const classes = useStyles();
-  const [values, setValues] = useState<Record<string, string>>({});
+  const blankValues = { name: '', size: 0 };
+  const [values, setValues] = useState<IGraphFormValues>(blankValues);
   const onChange = (ev: ChangeEvent<HTMLInputElement>) => {
     console.log(`old values`, values);
     setValues((values) => ({ ...values, [ev.target.id]: ev.target.value }));
@@ -46,11 +52,13 @@ const GraphForm: FC<IHasOnSubmit> = ({ onSubmit }) => {
         className={classes.paddingLeft}
       />
       <ButtonGroup className={classes.padding}>
-        <Button title="Push me" onClick={() => onSubmit(values)}>
+        <Button
+          title="Push me"
+          onClick={() => onSubmit<IGraphFormValues>(values)}
+        >
           Submit
         </Button>
       </ButtonGroup>
-      {values.query}
     </form>
   );
 };
