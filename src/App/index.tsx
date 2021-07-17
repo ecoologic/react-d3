@@ -1,8 +1,8 @@
 import React from 'react';
-import './App.css';
-import logo from './logo.svg';
+import './index.css';
+import logo from '../logo.svg';
 
-import Content from './Content';
+import Content from '../Content';
 import Themed from './Themed';
 
 const Header = (): JSX.Element => {

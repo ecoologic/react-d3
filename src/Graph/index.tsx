@@ -2,7 +2,7 @@ import React from 'react';
 import * as d3 from 'd3';
 import { SimulationNodeDatum } from 'd3';
 import { Box } from '@material-ui/core';
-import useStyles from '../useStyles';
+import useStyles from '../utils/useStyles';
 
 const nodes = [
   { id: 1, index: 1 },

@@ -2,7 +2,7 @@ import { Grid } from '@material-ui/core';
 import { FC } from 'react';
 import Graph from '../Graph';
 import GraphForm from '../GraphForm';
-import { IonSubmit } from '../interfaces';
+import { IonSubmit } from '../utils/interfaces';
 
 const Content: FC = () => {
   const onSubmit: IonSubmit = (values) => {
@@ -10,6 +10,7 @@ const Content: FC = () => {
     alert(JSON.stringify(values));
   };
 
+  // TODO: !!!!!test!!!!!!!!!!!!!!
   // TODO: boxes responsiveness!!!!
   // TODO: or d3?
 
