@@ -1,28 +1,9 @@
-import {
-  Button as MuiButton,
-  ButtonGroup,
-  Grid,
-  TextField,
-} from '@material-ui/core';
-import { ButtonProps } from '@material-ui/core/Button/Button';
+import { ButtonGroup, Grid, TextField } from '@material-ui/core';
 import React, { ChangeEvent, FC, useState } from 'react';
 import Graph from '../Graph';
 import { IHasOnSubmit, IonSubmit } from '../interfaces';
+import Button from '../utils/Button';
 import useStyles from './useStyles';
-
-// TODO: variant="contained" color="secondary" works??
-const Button: FC<ButtonProps & { enabled?: boolean }> = ({
-  enabled = true,
-  disabled,
-  children,
-  ...otherProps
-}) => {
-  return (
-    <MuiButton disabled={!enabled} {...otherProps}>
-      {children}
-    </MuiButton>
-  );
-};
 
 type IGraphFormFields = 'name' | 'size';
 interface IGraphFormValues {
