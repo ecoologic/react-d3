@@ -106,8 +106,14 @@ const Content: FC = () => {
 
   return (
     <main className="App__content">
-      <GraphForm onSubmit={onSubmit} />
-      <Graph />
+      <Grid container spacing={3}>
+        <Grid item md={6}>
+          <GraphForm onSubmit={onSubmit} />
+        </Grid>
+        <Grid item md={6}>
+          <Graph />
+        </Grid>
+      </Grid>
     </main>
   );
 };
