@@ -1,16 +1,15 @@
 import { TextField, ButtonGroup, Grid } from '@material-ui/core';
 import Button from '../utils/Button';
 import { ChangeEvent, FC, useState } from 'react';
-import useStyles from '../utils/useStyles';
 import { IHasOnSubmit } from '../utils/interfaces';
 
-type IGraphFormFields = 'name' | 'size';
-interface IGraphFormValues {
+export type IGraphFormFields = 'name' | 'size';
+export interface IGraphFormValues {
   name: string;
   size: number;
 }
 
-const GraphForm: FC<IHasOnSubmit<object>> = ({ onSubmit }) => {
+const GraphForm: FC<IHasOnSubmit<IGraphFormValues>> = ({ onSubmit }) => {
   const blankValues = { name: '', size: 0 };
   const [values, setValues] = useState<IGraphFormValues>(blankValues);
 

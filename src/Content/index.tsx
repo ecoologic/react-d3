@@ -1,13 +1,13 @@
 import { Grid } from '@material-ui/core';
 import { FC, useState } from 'react';
 import Graph from '../Graph';
-import GraphForm from '../GraphForm';
+import GraphForm, { IGraphFormValues } from '../GraphForm';
 import { IonSubmit } from '../utils/interfaces';
 
 const Content: FC = () => {
-  const [values, setValues] = useState<object>({});
-  const onSubmit: IonSubmit<object> = (values) => {
-    setValues(values);
+  const [values, setValues] = useState<IGraphFormValues[]>([]);
+  const onSubmit: IonSubmit<IGraphFormValues> = (values) => {
+    setValues((prevValues) => [...prevValues, values]);
     console.log(` values`, values);
     alert(JSON.stringify(values));
   };
