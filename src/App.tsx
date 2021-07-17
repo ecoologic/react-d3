@@ -1,10 +1,9 @@
 import React from 'react';
 import './App.css';
 import logo from './logo.svg';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 
 import Content from './Content';
+import Themed from './Themed';
 
 const Header = (): JSX.Element => {
   return (
@@ -23,25 +22,14 @@ const Footer = (): JSX.Element => {
   );
 };
 
-// https://material-ui.com/customization/default-theme/
-const theme = createMuiTheme({
-  props: {
-    MuiButton: { variant: 'contained' },
-  },
-  typography: {
-    button: { textTransform: 'none' },
-  },
-});
-
 const App = (): JSX.Element => {
   return (
     <article className="App">
-      <CssBaseline />
-      <ThemeProvider theme={theme}>
+      <Themed>
         <Header />
         <Content />
         <Footer />
-      </ThemeProvider>
+      </Themed>
     </article>
   );
 };
