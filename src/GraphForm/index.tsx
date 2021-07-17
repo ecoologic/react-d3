@@ -10,8 +10,7 @@ interface IGraphFormValues {
   size: number;
 }
 
-const GraphForm: FC<IHasOnSubmit> = ({ onSubmit }) => {
-  const classes = useStyles();
+const GraphForm: FC<IHasOnSubmit<object>> = ({ onSubmit }) => {
   const blankValues = { name: '', size: 0 };
   const [values, setValues] = useState<IGraphFormValues>(blankValues);
 
@@ -44,7 +43,7 @@ const GraphForm: FC<IHasOnSubmit> = ({ onSubmit }) => {
             autoFocus
             onChange={onChange}
             error={!valid('name')}
-            helperText={valid('name') ? 'Must be present' : ''}
+            helperText={valid('name') ? '' : `Any value`}
           />
         </Grid>
         <Grid item md={2}>
@@ -55,7 +54,7 @@ const GraphForm: FC<IHasOnSubmit> = ({ onSubmit }) => {
             required
             onChange={onChange}
             error={!valid('size')}
-            helperText={valid('size') ? 'A positive value' : ''}
+            helperText={valid('size') ? '' : `A positive value`}
           />
         </Grid>
         <Grid item md={12}>
@@ -63,7 +62,7 @@ const GraphForm: FC<IHasOnSubmit> = ({ onSubmit }) => {
             <Button
               enabled={isEnabled()}
               title="Push me"
-              onClick={() => onSubmit<IGraphFormValues>(values)}
+              onClick={() => onSubmit(values)}
               fullWidth={true}
             >
               Submit

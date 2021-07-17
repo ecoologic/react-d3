@@ -1,16 +1,18 @@
 import { Grid } from '@material-ui/core';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import Graph from '../Graph';
 import GraphForm from '../GraphForm';
 import { IonSubmit } from '../utils/interfaces';
 
 const Content: FC = () => {
-  const onSubmit: IonSubmit = (values) => {
+  const [values, setValues] = useState<object>({});
+  const onSubmit: IonSubmit<object> = (values) => {
+    setValues(values);
     console.log(` values`, values);
     alert(JSON.stringify(values));
   };
 
-  // TODO: !!!!!test!!!!!!!!!!!!!!
+  // TODO: fix test config (damn d3)
   // TODO: boxes responsiveness!!!!
   // TODO: or d3?
 
@@ -22,6 +24,7 @@ const Content: FC = () => {
         </Grid>
         <Grid item md={6}>
           <Graph />
+          {JSON.stringify(values)}
         </Grid>
       </Grid>
     </main>
