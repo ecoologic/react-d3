@@ -6,8 +6,17 @@ Run with:
 
 ```
 npm install
+npm test
 npm start
 ```
+
+## TODOs
+
+- Fix test config (damn d3)
+- Boxes responsiveness!!!!
+- D3?
+- Button variant="contained" color="secondary"
+- Form: can we use onSubmit?
 
 ---
 

@@ -8,13 +8,7 @@ const Content: FC = () => {
   const [values, setValues] = useState<IGraphFormValues[]>([]);
   const onSubmit: IonSubmit<IGraphFormValues> = (values) => {
     setValues((prevValues) => [...prevValues, values]);
-    console.log(` values`, values);
-    alert(JSON.stringify(values));
   };
-
-  // TODO: fix test config (damn d3)
-  // TODO: boxes responsiveness!!!!
-  // TODO: or d3?
 
   return (
     <main className="App__content">
@@ -24,7 +18,6 @@ const Content: FC = () => {
         </Grid>
         <Grid item md={6}>
           <Graph />
-          {JSON.stringify(values)}
         </Grid>
       </Grid>
     </main>

@@ -15,7 +15,6 @@ const GraphForm: FC<IHasOnSubmit<IGraphFormValues>> = ({ onSubmit }) => {
   const firstInputRef = useRef<HTMLHeadingElement | null>(null);
 
   const onChange = (ev: ChangeEvent<HTMLInputElement>) => {
-    console.log(`old values`, values);
     setValues((values) => ({ ...values, [ev.target.id]: ev.target.value }));
   };
 
@@ -25,14 +24,12 @@ const GraphForm: FC<IHasOnSubmit<IGraphFormValues>> = ({ onSubmit }) => {
       name: () => !!value,
       size: () => value > 0,
     }[field];
-    console.log(`valid ${field} `, fieldValidator, fieldValidator());
     return fieldValidator();
   };
 
   const isEnabled = (): boolean => true;
   const reset: voidFn = () => {
     setValues(blankValues);
-    console.log(` firstInputRef`, firstInputRef);
     firstInputRef?.current?.focus?.();
   };
   const handleSubmit: voidFn = () => {
@@ -40,7 +37,6 @@ const GraphForm: FC<IHasOnSubmit<IGraphFormValues>> = ({ onSubmit }) => {
     reset();
   };
 
-  // TODO: can we use onSubmit in the form?
   return (
     <form>
       <Grid container spacing={3}>
