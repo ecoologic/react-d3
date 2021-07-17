@@ -49,8 +49,8 @@ const GraphForm: FC<IHasOnSubmit<IGraphFormValues>> = ({ onSubmit }) => {
             helperText={valid('name') ? '' : `Any value`}
             inputRef={firstInputRef}
             required
-            onChange={onChange}
             autoFocus
+            onChange={onChange}
           />
         </Grid>
         <Grid item md={2}>

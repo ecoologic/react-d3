@@ -1,6 +1,6 @@
 import { Grid } from '@material-ui/core';
 import { FC, useState } from 'react';
-import Graph from '../Graph';
+import Graph, { INode } from '../Graph';
 import GraphForm, { IGraphFormValues } from '../GraphForm';
 import { IonSubmit } from '../utils/interfaces';
 
@@ -10,6 +10,8 @@ const Content: FC = () => {
     setValues((prevValues) => [...prevValues, values]);
   };
 
+  const nodes: INode[] = values.map(({ size }) => ({ id: size, index: size }));
+
   return (
     <main className="App__content">
       <Grid container spacing={3}>
@@ -17,7 +19,7 @@ const Content: FC = () => {
           <GraphForm onSubmit={onSubmit} />
         </Grid>
         <Grid item md={6}>
-          <Graph />
+          <Graph nodes={nodes} />
         </Grid>
       </Grid>
     </main>
