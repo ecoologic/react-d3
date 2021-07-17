@@ -5,6 +5,7 @@ import { FC } from 'react';
 const theme = createMuiTheme({
   props: {
     MuiButton: { variant: 'contained' },
+    MuiTextField: { fullWidth: true },
   },
   typography: {
     button: { textTransform: 'none' },

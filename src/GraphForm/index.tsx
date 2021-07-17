@@ -40,10 +40,8 @@ const GraphForm: FC<IHasOnSubmit> = ({ onSubmit }) => {
           <TextField
             id="name"
             label="Name"
-            type="text"
             required
             autoFocus
-            fullWidth={true}
             onChange={onChange}
             error={!valid('name')}
             helperText={valid('name') ? 'Must be present' : ''}
@@ -56,7 +54,6 @@ const GraphForm: FC<IHasOnSubmit> = ({ onSubmit }) => {
             type="number"
             required
             onChange={onChange}
-            fullWidth={true}
             error={!valid('size')}
             helperText={valid('size') ? 'A positive value' : ''}
           />
