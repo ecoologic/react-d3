@@ -1,7 +1,7 @@
 import { TextField, ButtonGroup, Grid } from '@material-ui/core';
 import Button from '../utils/Button';
 import { ChangeEvent, FC, useState } from 'react';
-import useStyles from '../Content/useStyles';
+import useStyles from '../useStyles';
 import { IHasOnSubmit } from '../interfaces';
 
 type IGraphFormFields = 'name' | 'size';
