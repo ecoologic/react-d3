@@ -10,6 +10,9 @@ const Content: FC = () => {
     alert(JSON.stringify(values));
   };
 
+  // TODO: boxes responsiveness!!!!
+  // TODO: or d3?
+
   return (
     <main className="App__content">
       <Grid container spacing={3}>
