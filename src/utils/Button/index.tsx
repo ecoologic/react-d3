@@ -9,7 +9,7 @@ const Button: FC<ButtonProps & { enabled?: boolean }> = ({
   ...otherProps
 }) => {
   return (
-    <MuiButton disabled={!enabled} {...otherProps}>
+    <MuiButton {...otherProps} disabled={!enabled} variant="contained">
       {children}
     </MuiButton>
   );

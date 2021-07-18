@@ -53,9 +53,3 @@ body {
   background-color: var(--blackish);
   color: var(--whitish);
 }
-
-/* Functional */
-
-.rootEl {
-  padding: 0 5px;
-}

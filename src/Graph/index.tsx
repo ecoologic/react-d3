@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import * as d3 from 'd3';
-import { Box } from '@material-ui/core';
+import { Box, Typography } from '@material-ui/core';
 import useStyles from '../utils/useStyles';
 
 export interface INode {
@@ -28,13 +28,15 @@ const Graph: FC<IGraphProps> = ({ nodes }) => {
       .attr('r', 10);
   }, [nodes]);
   return (
-    <Box className={classes.bordered}>
-      <div id="graphId" ref={graphRef} className="Graph">
-        <svg xmlns="http://www.w3.org/2000/svg">
-          <g id="nodeGroup" fill="white" stroke="green" strokeWidth="5"></g>
-        </svg>
-      </div>
-      {JSON.stringify(nodes)}
+    <Box>
+      <Box className={classes.bordered}>
+        <div id="graphId" ref={graphRef} className="Graph">
+          <svg xmlns="http://www.w3.org/2000/svg" className="wh-full">
+            <g id="nodeGroup" fill="white" stroke="green" strokeWidth="5"></g>
+          </svg>
+        </div>
+      </Box>
+      <Typography color={'primary'}>{JSON.stringify(nodes)}</Typography>
     </Box>
   );
 };

@@ -70,6 +70,7 @@ const GraphForm: FC<IHasOnSubmit<IGraphFormValues>> = ({ onSubmit }) => {
             <Button
               enabled={isEnabled()}
               title="Push me"
+              color="primary"
               onClick={handleSubmit}
               fullWidth={true}
             >

@@ -1,0 +1,16 @@
+/* https://tailwindcss.com/docs/height */
+
+.h-full {
+  height: 100%;
+}
+
+.w-full {
+  width: 100%;
+}
+
+/* Custom */
+
+.hw-full {
+  height: 100%;
+  width: 100%;
+}
