@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import * as d3 from 'd3';
+// import * as d3 from 'd3';
 import { Box, Typography } from '@material-ui/core';
 import useStyles from '../utils/useStyles';
 
@@ -18,14 +18,14 @@ const Graph: FC<IGraphProps> = ({ nodes }) => {
   const classes = useStyles();
   const graphRef = React.useRef(null);
   React.useEffect(() => {
-    d3.select(`#nodeGroup`)
-      .selectAll('circle')
-      .data(nodes)
-      .enter()
-      .append('circle')
-      .attr('cx', (d) => d.index * 10)
-      .attr('cy', (d) => d.index * 10)
-      .attr('r', 10);
+    // d3.select(`#nodeGroup`)
+    //   .selectAll('circle')
+    //   .data(nodes)
+    //   .enter()
+    //   .append('circle')
+    //   .attr('cx', (d) => d.index * 10)
+    //   .attr('cy', (d) => d.index * 10)
+    //   .attr('r', 10);
   }, [nodes]);
   return (
     <Box>
@@ -34,6 +34,7 @@ const Graph: FC<IGraphProps> = ({ nodes }) => {
           <svg xmlns="http://www.w3.org/2000/svg" className="wh-full">
             <g id="nodeGroup" fill="white" stroke="green" strokeWidth="5"></g>
           </svg>
+          D3 DISABLED
         </div>
       </Box>
       <Typography color={'primary'}>{JSON.stringify(nodes)}</Typography>
