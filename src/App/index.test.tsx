@@ -1,9 +1,13 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from '.';
+import { TITLE } from '../utils/support';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test('renders the layout', () => {
+  const { container, findByText, debug } = render(<App />);
+
+  expect(container.querySelector('article header h2')?.textContent).toEqual(
+    TITLE
+  );
+  expect(findByText('Designed by ecoologic')).toBeTruthy();
 });
