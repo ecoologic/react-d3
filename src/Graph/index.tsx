@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import * as d3 from 'd3';
 import { Box, Typography } from '@material-ui/core';
 import useStyles from '../utils/useStyles';
+import { graph } from './Hierarchy';
 
 export interface INode {
   id: number;
@@ -11,6 +12,32 @@ export interface INode {
 interface IGraphProps {
   nodes: INode[];
 }
+
+const root = {
+  name: 'root',
+  children: [
+    { name: 'child #1' },
+    {
+      name: 'child #2',
+      children: [
+        { name: 'grandchild #1' },
+        { name: 'grandchild #2' },
+        { name: 'grandchild #3' },
+      ],
+    },
+  ],
+};
+
+// arrays = d3.hierarchy([
+//   [
+//     "leaf #1",
+//     [
+//       "leaf #2",
+//       "leaf #3",
+//       "leaf #4"
+//     ]
+//   ]
+// ], d => Array.isArray(d) ? d : undefined)
 
 // https://www.d3indepth.com/selections/
 // const Graph = ({ nodes }: IGraphProps): JSX.Element => {
@@ -27,11 +54,18 @@ const Graph: FC<IGraphProps> = ({ nodes }) => {
       .attr('cy', (d) => d.index * 10)
       .attr('r', 10);
   }, [nodes]);
+
+  graph(graphRef.current, root);
+
   return (
     <Box>
       <Box className={classes.bordered}>
-        <div id="graphId" ref={graphRef} className="Graph">
-          <svg xmlns="http://www.w3.org/2000/svg" className="wh-full">
+        <div id="graphId" className="Graph">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            ref={graphRef}
+            className="wh-full"
+          >
             <g id="nodeGroup" fill="white" stroke="green" strokeWidth="5"></g>
           </svg>
         </div>
