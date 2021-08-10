@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import * as d3 from 'd3';
 import { Box, Typography } from '@material-ui/core';
 import useStyles from '../utils/useStyles';
-import { graph } from './Hierarchy';
+import { drawGraph } from './Hierarchy';
 
 export interface INode {
   id: number;
@@ -55,7 +55,7 @@ const Graph: FC<IGraphProps> = ({ nodes }) => {
       .attr('r', 10);
   }, [nodes]);
 
-  graph(graphRef.current, root);
+  drawGraph(graphRef.current, root);
 
   return (
     <Box>

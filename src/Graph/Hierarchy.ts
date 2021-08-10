@@ -1,19 +1,36 @@
 import * as d3 from 'd3';
-import { tree } from 'd3';
 
 // hierarchy is a nested data structure representing a tree
 
 // const width = 500;
 const dx = 30;
 
-export function graph(
-  svgRef: any,
-  rootData: any,
-  { label = (d: any) => d.data.id, marginLeft = 40 } = {}
-) {
-  const root = d3.tree().nodeSize([130, 100])(d3.hierarchy(rootData));
-  // root = tree(rootData);
-  console.log(root.descendants(), root.links());
+const treeWidth = 300;
+const treeHeight = 50;
+
+export function drawGraph(svgRef: any, rootData: any) {
+  const label = (d: any) => d.data.id,
+    marginLeft = 40;
+  const svg = d3.select(svgRef).style('overflow', 'visible');
+
+  // hierarchyRoot
+  const root = d3.tree().nodeSize([treeHeight, treeWidth])(
+    d3.hierarchy(rootData)
+  );
+  const nodes = root.descendants();
+  const links = root.links();
+
+  // linksOrientation
+  const treeLink: any = d3
+    .linkHorizontal()
+    .x((d: any) => d.y)
+    .y((d: any) => d.x);
+  // const treeLink: any = d3
+  //   .linkVertical()
+  //   .x((d: any) => d.x)
+  //   .y((d: any) => d.y);
+
+  // label position ??
   let x0 = Infinity;
   let x1 = -x0;
   root.each((d: any) => {
@@ -21,20 +38,13 @@ export function graph(
     if (d.x < x0) x0 = d.x;
   });
 
-  const treeLink: any = d3
-    .linkHorizontal()
-    .x((d: any) => d.y)
-    .y((d: any) => d.x);
-
-  const svg = d3.select(svgRef).style('overflow', 'visible');
-  // .attr('viewBox', [0, 0, width, x1 - x0 + dx * 2])
-
   const g = svg
     .append('g')
     .attr('font-family', 'sans-serif')
     .attr('font-size', 10)
     .attr('transform', `translate(${marginLeft},${dx - x0})`);
 
+  //
   const link = g
     .append('g')
     .attr('fill', 'none')
@@ -42,14 +52,8 @@ export function graph(
     .attr('stroke-opacity', 0.4)
     .attr('stroke-width', 1.5)
     .selectAll('path')
-    .data(root.links())
-    .join('path')
-    // .attr('stroke', (d: any) =>
-    //   highlight(d.source) && highlight(d.target) ? 'red' : null
-    // )
-    // .attr('stroke-opacity', (d: any) =>
-    //   highlight(d.source) && highlight(d.target) ? 1 : null
-    // )
+    .data(links)
+    .join('path') // <-
     .attr('d', treeLink);
 
   const node = g
@@ -57,7 +61,7 @@ export function graph(
     .attr('stroke-linejoin', 'round')
     .attr('stroke-width', 3)
     .selectAll('g')
-    .data(root.descendants())
+    .data(nodes)
     .join('g')
     .attr('transform', (d: any) => `translate(${d.y},${d.x})`);
 
@@ -66,6 +70,7 @@ export function graph(
     .attr('fill', (d: any) => 'red')
     .attr('r', 2.5);
 
+  // connectNodesWithLinks (and label)
   node
     .append('text')
     .attr('fill', (d: any) => 'red')
