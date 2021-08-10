@@ -9,9 +9,8 @@ const treeWidth = 300;
 const treeHeight = 50;
 
 export function drawGraph(svgRef: any, rootData: any) {
-  const label = (d: any) => d.data.id,
-    marginLeft = 40;
   const svg = d3.select(svgRef).style('overflow', 'visible');
+  const marginLeft = 40;
 
   // hierarchyRoot
   const root = d3.tree().nodeSize([treeHeight, treeWidth])(
@@ -71,6 +70,10 @@ export function drawGraph(svgRef: any, rootData: any) {
     .attr('r', 2.5);
 
   // connectNodesWithLinks (and label)
+  const label = (d: any) => {
+    return d.data.name;
+  };
+
   node
     .append('text')
     .attr('fill', (d: any) => 'red')
