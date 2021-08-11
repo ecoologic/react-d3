@@ -65,13 +65,15 @@ export function drawGraph(svgRef: any, rootData: any) {
     .attr('id', (d: any) => `${d.source.data.id}_${d.target.data.id}`);
 
   // set the label on the path
-  svg
+  const linkLabels = g
     .selectAll('.link_labels')
     .data(links)
     .join('text')
     .attr('transform', `translate(${marginLeft},${dx - x0})`)
     .attr('class', 'link_labels')
     .append('textPath')
+    .attr('text-anchor', 'middle')
+    .attr('startOffset', '50%')
     // the href of the textpath should be the id of the path
     .attr('href', (d: any) => `#${d.source.data.id}_${d.target.data.id}`)
 
