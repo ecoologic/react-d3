@@ -8,6 +8,8 @@ const dx = 30;
 const treeWidth = 300;
 const treeHeight = 50;
 
+const datumLinkId = (d: any) => `#${d.source.data.id}/${d.target.data.id}`;
+
 export function drawGraph(svgRef: any, rootData: any) {
   const labelMaker = {
     nodes: (d: any) => d.data.name,
@@ -62,21 +64,19 @@ export function drawGraph(svgRef: any, rootData: any) {
     .data(links)
     .join('path') // <- TODO read https://observablehq.com/@d3/selection-join
     .attr('d', treeLink)
-    .attr('id', (d: any) => `${d.source.data.id}_${d.target.data.id}`);
+    .attr('id', datumLinkId);
 
   // set the label on the path
   const linkLabels = g
     .selectAll('.link_labels')
     .data(links)
     .join('text')
-    .attr('transform', `translate(${marginLeft},${dx - x0})`)
     .attr('class', 'link_labels')
     .append('textPath')
     .attr('text-anchor', 'middle')
     .attr('startOffset', '50%')
-    // the href of the textpath should be the id of the path
-    .attr('href', (d: any) => `#${d.source.data.id}_${d.target.data.id}`)
-
+    // needed to connect link with its text
+    .attr('href', (d: any) => `#${datumLinkId(d)}`)
     .text(labelMaker.links);
 
   const nodeSelection = g
