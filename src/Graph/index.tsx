@@ -45,17 +45,27 @@ const Graph: FC<IGraphProps> = ({ nodes }) => {
   const classes = useStyles();
   const graphRef = React.useRef(null);
   React.useEffect(() => {
-    d3.select(`#nodeGroup`)
-      .selectAll('circle')
-      .data(nodes)
-      .enter()
-      .append('circle')
-      .attr('cx', (d) => d.index * 10)
-      .attr('cy', (d) => d.index * 10)
-      .attr('r', 10);
+    // d3.select(`#nodeGroup`)
+    //   .selectAll('circle')
+    //   .data(nodes)
+    //   .enter()
+    //   .append('circle')
+    //   .attr('cx', (d) => d.index * 10)
+    //   .attr('cy', (d) => d.index * 10)
+    //   .attr('r', 10);
   }, [nodes]);
 
-  drawGraph(graphRef.current, root);
+  React.useEffect(() => {
+    // d3.select(`#nodeGroup`)
+    //   .selectAll('circle')
+    //   .data(nodes)
+    //   .enter()
+    //   .append('circle')
+    //   .attr('cx', (d) => d.index * 10)
+    //   .attr('cy', (d) => d.index * 10)
+    //   .attr('r', 10);
+    drawGraph(graphRef.current, root);
+  }, []);
 
   return (
     <Box>
@@ -65,9 +75,7 @@ const Graph: FC<IGraphProps> = ({ nodes }) => {
             xmlns="http://www.w3.org/2000/svg"
             ref={graphRef}
             className="wh-full"
-          >
-            <g id="nodeGroup" fill="white" stroke="green" strokeWidth="5"></g>
-          </svg>
+          ></svg>
         </div>
       </Box>
       <Typography color={'primary'}>{JSON.stringify(nodes)}</Typography>

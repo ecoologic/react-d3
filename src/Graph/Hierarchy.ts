@@ -9,6 +9,11 @@ const treeWidth = 300;
 const treeHeight = 50;
 
 export function drawGraph(svgRef: any, rootData: any) {
+  const labelMaker = {
+    nodes: (d: any) => d.data.name,
+    links: (d: any) => `From ${d.source.data.name} to ${d.target.data.name}`,
+  };
+
   const svg = d3.select(svgRef).style('overflow', 'visible');
   const marginLeft = 40;
 
@@ -29,7 +34,7 @@ export function drawGraph(svgRef: any, rootData: any) {
   //   .x((d: any) => d.x)
   //   .y((d: any) => d.y);
 
-  // label position ??
+  // ????
   let x0 = Infinity;
   let x1 = -x0;
   root.each((d: any) => {
@@ -37,14 +42,16 @@ export function drawGraph(svgRef: any, rootData: any) {
     if (d.x < x0) x0 = d.x;
   });
 
+  // nodes and links group ???
   const g = svg
     .append('g')
+    .attr('id', 'linkGroup')
     .attr('font-family', 'sans-serif')
     .attr('font-size', 10)
     .attr('transform', `translate(${marginLeft},${dx - x0})`);
 
   //
-  const link = g
+  const linkSelection = g
     .append('g')
     .attr('fill', 'none')
     .attr('stroke', '#555')
@@ -53,10 +60,12 @@ export function drawGraph(svgRef: any, rootData: any) {
     .selectAll('path')
     .data(links)
     .join('path') // <-
-    .attr('d', treeLink);
+    .attr('d', treeLink)
+    .text(labelMaker.links);
 
-  const node = g
+  const nodeSelection = g
     .append('g')
+    .attr('id', 'nodeGroup')
     .attr('stroke-linejoin', 'round')
     .attr('stroke-width', 3)
     .selectAll('g')
@@ -64,23 +73,20 @@ export function drawGraph(svgRef: any, rootData: any) {
     .join('g')
     .attr('transform', (d: any) => `translate(${d.y},${d.x})`);
 
-  node
+  nodeSelection
     .append('circle')
     .attr('fill', (d: any) => 'red')
     .attr('r', 2.5);
 
   // connectNodesWithLinks (and label)
-  const label = (d: any) => {
-    return d.data.name;
-  };
 
-  node
+  nodeSelection
     .append('text')
     .attr('fill', (d: any) => 'red')
     .attr('dy', '0.31em')
     .attr('x', (d: any) => (d.children ? -6 : 6))
     .attr('text-anchor', (d: any) => (d.children ? 'end' : 'start'))
-    .text(label)
+    .text(labelMaker.nodes)
     .clone(true)
     .lower()
     .attr('stroke', 'white');
