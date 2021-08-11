@@ -50,7 +50,7 @@ export function drawGraph(svgRef: any, rootData: any) {
     .attr('font-size', 10)
     .attr('transform', `translate(${marginLeft},${dx - x0})`);
 
-  //
+  // set the path
   const linkSelection = g
     .append('g')
     .attr('id', 'linkGroup')
@@ -60,9 +60,21 @@ export function drawGraph(svgRef: any, rootData: any) {
     .attr('stroke-width', 1.5)
     .selectAll('path')
     .data(links)
-    .join('path') // <- TODO read
+    .join('path') // <- TODO read https://observablehq.com/@d3/selection-join
     .attr('d', treeLink)
-    .attr('id', (d: any) => `${d.source.data.name}${d.target.data.name}`)
+    .attr('id', (d: any) => `${d.source.data.id}_${d.target.data.id}`);
+
+  // set the label on the path
+  svg
+    .selectAll('.link_labels')
+    .data(links)
+    .join('text')
+    .attr('transform', `translate(${marginLeft},${dx - x0})`)
+    .attr('class', 'link_labels')
+    .append('textPath')
+    // the href of the textpath should be the id of the path
+    .attr('href', (d: any) => `#${d.source.data.id}_${d.target.data.id}`)
+
     .text(labelMaker.links);
 
   const nodeSelection = g

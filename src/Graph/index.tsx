@@ -15,14 +15,16 @@ interface IGraphProps {
 
 const root = {
   name: 'root',
+  id: 'root',
   children: [
-    { name: 'child #1' },
+    { name: 'child #1', id: 'c1' },
     {
       name: 'child #2',
+      id: 'c2',
       children: [
-        { name: 'grandchild #1' },
-        { name: 'grandchild #2' },
-        { name: 'grandchild #3' },
+        { name: 'grandchild #1', id: 'gc1' },
+        { name: 'grandchild #2', id: 'gc2' },
+        { name: 'grandchild #3', id: 'gc3' },
       ],
     },
   ],
