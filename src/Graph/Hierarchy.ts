@@ -45,7 +45,7 @@ export function drawGraph(svgRef: any, rootData: any) {
   // nodes and links group ???
   const g = svg
     .append('g')
-    .attr('id', 'linkGroup')
+    .attr('id', 'parentGroup')
     .attr('font-family', 'sans-serif')
     .attr('font-size', 10)
     .attr('transform', `translate(${marginLeft},${dx - x0})`);
@@ -53,14 +53,16 @@ export function drawGraph(svgRef: any, rootData: any) {
   //
   const linkSelection = g
     .append('g')
+    .attr('id', 'linkGroup')
     .attr('fill', 'none')
     .attr('stroke', '#555')
     .attr('stroke-opacity', 0.4)
     .attr('stroke-width', 1.5)
     .selectAll('path')
     .data(links)
-    .join('path') // <-
+    .join('path') // <- TODO read
     .attr('d', treeLink)
+    .attr('id', (d: any) => `${d.source.data.name}${d.target.data.name}`)
     .text(labelMaker.links);
 
   const nodeSelection = g
